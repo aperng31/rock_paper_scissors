@@ -60,7 +60,7 @@ function playRound(playerSel, computerSel) {
 function checkChoice(choice) {
     choice = choice.toLowerCase();
     console.log(choice);
-    if (choice === ("rock" || "paper" || "scissors")) {     
+    if (choice === "rock" || choice === "paper" || choice === "scissors") {     
         return 1;
     }
     else {
@@ -80,17 +80,18 @@ function game() {
         } while (checkChoice(playerSel) == 0)
 
         computerSel = getComputerChoice();
+        let result = playRound(playerSel, computerSel);
 
-        if (playRound(playerSel, computerSel)) {
+        if (result == 1) {
             playerScore++;
         }
-        else if (playRound(playerSel, computerSel) == 2) {
+        else if (result == 2) {
             computerScore++;
         }
     }
 
-    console.log("P" + playerScore);
-    console.log("C" + computerScore);
+    console.log("Player score: " + playerScore);
+    console.log("Comp score: " + computerScore);
 
     if (playerScore > computerScore) {
         console.log("Player Wins Match");
