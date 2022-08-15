@@ -15,12 +15,12 @@ const cSel = document.querySelector('.compSel');
 
 //hasWon boolean to detect if anybody has won
 const winner = document.querySelector('.winner');
+const cont = document.querySelector('.cont');
 let hasWon = false;
 
 function play() {
     restart();
     playerSel = this.id;
-    console.log(playerSel);
 
     playRound(playerSel);
     updateScore();
@@ -34,6 +34,7 @@ function play() {
         else {
             winner.textContent = "Computer Wins Match";
         }
+        cont.textContent = "Make a selection to restart a new match";
         //indicate that somebody has won
         hasWon = true;
     }
@@ -41,7 +42,7 @@ function play() {
 
 function getComputerChoice() {
     let numRandom = Math.random();
-    console.log(numRandom);
+
     if (numRandom <= (1/3)) {
         return "gun";
     }
@@ -61,41 +62,41 @@ function playRound(sel) {
 
     if (sel == "gun") {
         if (computerSel == "man") {
-            console.log("Computer Wins");
+            winner.textContent = ("Computer Wins");
             computerScore++;
         }
         else if (computerSel == "bear") {
-            console.log("Player Wins");
+            winner.textContent = ("Player Wins");
             playerScore++;
         }
         else {
-            console.log("Tie");
+            winner.textContent = ("Tie");
         }
     }
     else if (sel == "man") {
         if (computerSel == "bear") {
-            console.log("Computer Wins");
+            winner.textContent = ("Computer Wins");
             computerScore++;
         }
         else if (computerSel == "gun") {
-            console.log("Player Wins");
+            winner.textContent = ("Player Wins");
             playerScore++;
         }
         else {
-            console.log("Tie");
+            winner.textContent = ("Tie");
         }
     }
     else {
         if (computerSel == "gun") {
-            console.log("Computer Wins");
+            winner.textContent = ("Computer Wins");
             computerScore++;
         }
         else if (computerSel == "man") {
-            console.log("Player Wins");
+            winner.textContent = ("Player Wins");
             playerScore++;
         }
         else {
-            console.log("Tie");
+            winner.textContent = ("Tie");
         }
     }
 }
@@ -120,7 +121,8 @@ function restart() {
     playerScore = 0;
     computerScore = 0;
     updateScore();
-    winner.textContent = "";
+    winner.textContent = '';
+    cont.textContent = '';
 }
 
 /*function checkChoice(choice) {
